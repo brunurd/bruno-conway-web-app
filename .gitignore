@@ -1,0 +1,52 @@
+# dependencies
+node_modules/
+jspm_packages/
+.pnp/
+.yarn/
+venv/
+.venv/
+package-lock.json
+yarn.lock
+.pnp.*
+npm-shrinkwrap.json
+bun.lockb
+.pnpm-store/
+
+# test
+coverage/
+.swc/
+*.mp4
+junit.xml
+
+# distribution
+dist/
+*.tsbuildinfo
+
+# misc
+__pycache__/
+logs/
+.DS_Store
+*.pem
+*.log
+*.log*
+*.deb
+.env
+.env.local
+*.zip
+*.db
+*.sqlite
+*.sqlite3
+*.db3
+*.s3db
+*.sl3
+*-journal
+*-shm
+*-wal
+*.pyc
+env.json
+env.*.json
+response.json
+vite.config.mts.timestamp-*
+
+# storybook
+storybook-static/
