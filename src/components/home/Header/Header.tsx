@@ -15,6 +15,7 @@ const Header = () => {
   const {
     runSimulation,
     reset,
+    nextState,
     data: { running },
   } = useContext(BoardContext);
 
@@ -26,10 +27,16 @@ const Header = () => {
         <Row>
           <Button
             disabled={running}
+            onClick={() => nextState()}
+          >
+            Next State
+          </Button>
+          {/* <Button
+            disabled={running}
             onClick={() => runSimulation()}
           >
             Run Simulation
-          </Button>
+          </Button> */}
           <Button
             onClick={() => reset()}
           >

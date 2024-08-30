@@ -9,7 +9,6 @@ import {
   BoardActions,
   BoardData,
   boardReducer,
-  CellsType,
 } from '../reducers/boardReducer';
 
 interface BoardContextProps {
@@ -18,16 +17,15 @@ interface BoardContextProps {
   selectCell: (x: number, y: number) => void,
   runSimulation: () => void,
   reset: () => void,
+  nextState: () => void,
 }
-
-const genNewCells = (): CellsType => Array.from({ length: config.rows }, () =>
-  Array.from({ length: config.cols }, () => false));
 
 const INITIAL_BOARD_DATA: BoardData = {
   cellSize: config.maxCellSize,
   rows: config.rows,
   cols: config.cols,
-  cells: genNewCells(),
+  cells: Array.from({ length: config.rows }, () =>
+    Array.from({ length: config.cols }, () => false)),
   running: false,
 };
 
@@ -37,6 +35,7 @@ const BoardContext = createContext<BoardContextProps>({
   selectCell: () => null,
   runSimulation: () => null,
   reset: () => null,
+  nextState: () => null,
 });
 
 const BoardProvider = ({ children }: { children: ReactNode }) => {
@@ -55,10 +54,8 @@ const BoardProvider = ({ children }: { children: ReactNode }) => {
         y,
       }),
       runSimulation: () => dispatch({ type: BoardActions.runSimulation }),
-      reset: () => {
-        dispatch({ type: BoardActions.setCells, cells: genNewCells() });
-        dispatch({ type: BoardActions.stopSimulation });
-      },
+      reset: () => dispatch({ type: BoardActions.reset }),
+      nextState: () => dispatch({ type: BoardActions.nextState }),
     };
   }, [boardState, dispatch]);
 

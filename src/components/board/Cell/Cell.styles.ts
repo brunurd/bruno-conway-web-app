@@ -3,7 +3,7 @@ import { darken, lighten } from 'polished';
 
 const CellStyle = styled.div<{
   $cellSize: number,
-  $isOn: boolean,
+  $isAlive: boolean,
   $disabled: boolean,
 }>`
   display: block;
@@ -12,9 +12,9 @@ const CellStyle = styled.div<{
   width: ${({ $cellSize }) => `${$cellSize}px`};
   height: ${({ $cellSize }) => `${$cellSize}px`};
 
-  ${({ $isOn, theme }) => {
-    const strokeColor = $isOn ? darken(0.1, theme.colors.lightOrange) : theme.colors.lightOrange;
-    const fillColor = $isOn ? theme.colors.brightOrange : theme.colors.white;
+  ${({ $isAlive, theme }) => {
+    const strokeColor = $isAlive ? darken(0.1, theme.colors.lightOrange) : theme.colors.lightOrange;
+    const fillColor = $isAlive ? theme.colors.brightOrange : theme.colors.white;
 
     return css`
       border: 1px solid ${strokeColor};

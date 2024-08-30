@@ -4,12 +4,12 @@ import { CellStyle } from './Cell.styles';
 
 const Cell = ({
   cellSize,
-  isOn,
+  isAlive,
   x,
   y,
 }: {
   cellSize: number,
-  isOn: boolean,
+  isAlive: boolean,
   x: number,
   y: number,
 }) => {
@@ -17,7 +17,7 @@ const Cell = ({
 
   return <CellStyle
     $cellSize={cellSize}
-    $isOn={isOn}
+    $isAlive={isAlive}
     $disabled={running}
     onClick={() => selectCell(x, y)}
   />;

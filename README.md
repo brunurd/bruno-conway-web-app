@@ -1,6 +1,8 @@
 # Bruno Araujo's Conway's Game of Life
 
-Reference: <https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life>
+References:
+- <https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life>
+- <https://www.youtube.com/watch?v=ouipbDkwHWA>
 
 |Project Info||
 |-|-|
