@@ -11,7 +11,7 @@ References:
 |Bundler|[Vite](./config/vite.config.ts)|
 |Language|TypeScript|
 
-![Printscreen](./docs/printscreen.gif)
+![Screen Recorded](./docs/screen-recorded-001.gif)
 
 ---
 
