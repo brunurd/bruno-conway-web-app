@@ -1,7 +1,7 @@
 import { useContext, useEffect, useMemo } from 'react';
-import { Center, Spacing } from '../../../ui/components';
-import { BoardContext } from '../../../contexts/BoardContext';
-import * as config from '../../../data/board.config.json';
+import { Center, Spacing } from '../../ui/components';
+import { BoardContext } from '../../contexts/BoardContext';
+import * as config from '../../data/board.config.json';
 import { CellSpawner } from '../CellSpawner';
 import { BoardContainer } from './Board.styles';
 

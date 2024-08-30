@@ -6,6 +6,7 @@ const colors = {
   black: '#1C1C1C',
   white: '#EDE7E1',
   whiteTransparent: '#EDE7E1bb',
+  error: '#FF0000',
 } as const;
 
 export { colors };

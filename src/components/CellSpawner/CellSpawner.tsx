@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { BoardContext } from '../../../contexts/BoardContext';
+import { BoardContext } from '../../contexts/BoardContext';
 import { Cell } from '../Cell';
 import { RowStyle } from './CellSpawner.styles';
 

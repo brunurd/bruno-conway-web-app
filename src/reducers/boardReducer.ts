@@ -14,6 +14,7 @@ enum BoardActions {
   runSimulation = 'BOARD/RUN_SIMULATION',
   reset = 'BOARD/RESET',
   nextState = 'BOARD/NEXT_STATE',
+  advanceStates = 'BOARD/ADVANCE_STATES',
 }
 
 const boardReducer = (
@@ -39,6 +40,8 @@ const boardReducer = (
       };
     case BoardActions.nextState:
       return { ...state, cells: nextState(state.cells) };
+    case BoardActions.advanceStates:
+      return { ...state, cells: advanceStates(action.times, state.cells) };
     default:
       return state;
   }
@@ -48,6 +51,7 @@ const nextState = (cells: CellsType): CellsType => {
   const nextStateCells = structuredClone(cells);
   return nextStateCells.map((row, x) => {
     return row.map((isAlive, y) => {
+
       // Check if cell is on edges.
       if (
         x < 1 || y < 1 ||
@@ -68,11 +72,18 @@ const nextState = (cells: CellsType): CellsType => {
         cells[x + 1][y + 1],
       ].filter(living => living).length;
 
+      // Less logic possible to validate a living cell.
       if (isAlive && livingNeighbors == 2) return true;
       else if (livingNeighbors == 3) return true;
       else return false;
+
     });
   });
+};
+
+const advanceStates = (times: number, cells: CellsType) => {
+  if (times === 0) return cells;
+  return advanceStates(times - 1, nextState(cells));
 };
 
 export type { CellsType, BoardData };

@@ -18,6 +18,7 @@ interface BoardContextProps {
   runSimulation: () => void,
   reset: () => void,
   nextState: () => void,
+  advanceStates: (times: number) => void,
 }
 
 const INITIAL_BOARD_DATA: BoardData = {
@@ -36,6 +37,7 @@ const BoardContext = createContext<BoardContextProps>({
   runSimulation: () => null,
   reset: () => null,
   nextState: () => null,
+  advanceStates: () => null,
 });
 
 const BoardProvider = ({ children }: { children: ReactNode }) => {
@@ -56,6 +58,10 @@ const BoardProvider = ({ children }: { children: ReactNode }) => {
       runSimulation: () => dispatch({ type: BoardActions.runSimulation }),
       reset: () => dispatch({ type: BoardActions.reset }),
       nextState: () => dispatch({ type: BoardActions.nextState }),
+      advanceStates: (times: number) => dispatch({
+        type: BoardActions.advanceStates,
+        times,
+      }),
     };
   }, [boardState, dispatch]);
 
