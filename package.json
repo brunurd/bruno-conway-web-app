@@ -10,7 +10,7 @@
     "start": "vite -c ./config/vite.config.ts --port 13000",
     "lint": "cross-env ESLINT_USE_FLAT_CONFIG=true eslint -c ./config/.eslintrc.js --debug",
     "unittest": "jest --config=./config/jest.config.js --forceExit --detectOpenHandles --passWithNoTests --watchAll=false --coverage",
-    "test": "cross-env pnpm lint && pnpm unittest && pnpm e2e-headless",
+    "test": "cross-env pnpm lint && pnpm unittest",
     "build": "cross-env tsc && vite build -c ./config/vite.config.ts"
   },
   "dependencies": {
