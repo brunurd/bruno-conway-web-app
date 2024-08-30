@@ -9,6 +9,8 @@ Reference: <https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life>
 |Bundler|[Vite](./config/vite.config.ts)|
 |Language|TypeScript|
 
+![Printscreen](./docs/printscreen.gif)
+
 ---
 
 ## How to Run
@@ -24,7 +26,7 @@ Run:
 ```
 pnpm start
 ```
-The app will be available in the address: [http://localhost:1300]([http://localhost:1300)
+The app will be available in the address: [`http://localhost:13000`]([http://localhost:13000)
 
 [pnpm]: https://pnpm.io/installation
 

@@ -1,10 +1,14 @@
 import { css, styled } from 'styled-components';
 import { darken, lighten } from 'polished';
 
-const CellStyle = styled.div<{ $cellSize: number, $isOn: boolean }>`
+const CellStyle = styled.div<{
+  $cellSize: number,
+  $isOn: boolean,
+  $disabled: boolean,
+}>`
   display: block;
   transition: background-color 0.15s ease-in-out;
-  cursor: pointer;
+  cursor: ${({ $disabled }) => $disabled ? 'auto' : 'pointer'};
   width: ${({ $cellSize }) => `${$cellSize}px`};
   height: ${({ $cellSize }) => `${$cellSize}px`};
 

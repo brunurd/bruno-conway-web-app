@@ -1,13 +1,19 @@
+type CellsType = Array<Array<boolean>>;
+
 interface BoardData {
   cellSize: number,
   rows: number,
   cols: number,
-  cells: Array<Array<boolean>>,
+  cells: CellsType,
+  running: boolean,
 }
 
 enum BoardActions {
   updateCellSize = 'BOARD/UPDATE_CELL_SIZE',
-  cellSwitch = 'BOARD/CELL_SWITCH',
+  selectCell = 'BOARD/SELECT_CELL',
+  runSimulation = 'BOARD/RUN_SIMULATION',
+  setCells = 'BOARD/SET_CELLS',
+  stopSimulation = 'BOARD/STOP_SIMULATION',
 }
 
 const boardReducer = (
@@ -17,14 +23,21 @@ const boardReducer = (
   switch (action.type) {
     case BoardActions.updateCellSize:
       return { ...state, cellSize: action.cellSize };
-    case BoardActions.cellSwitch:
-      const { cells } = state;
-      cells[action.x][action.y] = true;
-      return { ...state, cells };
+    case BoardActions.selectCell:
+      if (state.running) return state;
+      state.cells[action.x][action.y] = true;
+      return { ...state };
+    case BoardActions.runSimulation:
+      if (state.running) return state;
+      return { ...state, running: true };
+    case BoardActions.setCells:
+      return { ...state, cells: action.cells };
+    case BoardActions.stopSimulation:
+      return { ...state, running: false };
     default:
       return state;
   }
 };
 
-export type { BoardData };
+export type { CellsType, BoardData };
 export { boardReducer, BoardActions };

@@ -13,12 +13,13 @@ const Cell = ({
   x: number,
   y: number,
 }) => {
-  const { cellSwitch } = useContext(BoardContext);
+  const { selectCell, data: { running } } = useContext(BoardContext);
 
   return <CellStyle
     $cellSize={cellSize}
     $isOn={isOn}
-    onClick={() => cellSwitch(x, y)}
+    $disabled={running}
+    onClick={() => selectCell(x, y)}
   />;
 };
 
