@@ -2,5 +2,6 @@
   "rows": 50,
   "cols": 50,
   "maxCellSize": 18,
-  "minCellSize": 9
+  "minCellSize": 9,
+  "simulationMsInterval": 100
 }

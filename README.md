@@ -1,5 +1,7 @@
 # Bruno Araujo's Conway's Game of Life
 
+![Screen Recorded](./docs/screen-recorded-002.gif)
+
 References:
 - <https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life>
 - <https://www.youtube.com/watch?v=ouipbDkwHWA>
@@ -11,7 +13,7 @@ References:
 |Bundler|[Vite](./config/vite.config.ts)|
 |Language|TypeScript|
 
-![Screen Recorded](./docs/screen-recorded-001.gif)
+
 
 ---
 

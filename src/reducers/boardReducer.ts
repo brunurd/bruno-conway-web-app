@@ -12,6 +12,7 @@ enum BoardActions {
   updateCellSize = 'BOARD/UPDATE_CELL_SIZE',
   selectCell = 'BOARD/SELECT_CELL',
   runSimulation = 'BOARD/RUN_SIMULATION',
+  stopSimulation = 'BOARD/STOP_SIMULATION',
   reset = 'BOARD/RESET',
   nextState = 'BOARD/NEXT_STATE',
   advanceStates = 'BOARD/ADVANCE_STATES',
@@ -29,8 +30,9 @@ const boardReducer = (
       state.cells[action.x][action.y] = true;
       return { ...state };
     case BoardActions.runSimulation:
-      if (state.running) return state;
       return { ...state, running: true };
+    case BoardActions.stopSimulation:
+      return { ...state, running: false };
     case BoardActions.reset:
       return {
         ...state,

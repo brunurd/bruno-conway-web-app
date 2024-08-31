@@ -16,6 +16,7 @@ import { AdvanceStatesForm } from '../AdvanceStatesForm';
 const Header = () => {
   const {
     runSimulation,
+    stopSimulation,
     reset,
     nextState,
     data: { running },
@@ -40,12 +41,20 @@ const Header = () => {
               >
                 Next State
               </Button>
-              <Button
-                disabled={running}
-                onClick={() => runSimulation()}
-              >
-                Run Simulation
-              </Button>
+              {running ? (
+                <Button
+                  onClick={() => stopSimulation()}
+                >
+                  Stop Simulation
+                </Button>
+              ) : (
+                <Button
+                  disabled={running}
+                  onClick={() => runSimulation()}
+                >
+                  Run Simulation
+                </Button>
+              )}
               <Button
                 onClick={() => reset()}
               >

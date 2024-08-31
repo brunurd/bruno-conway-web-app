@@ -1,6 +1,7 @@
 import {
   createContext,
   ReactNode,
+  useEffect,
   useMemo,
   useReducer,
 } from 'react';
@@ -16,6 +17,7 @@ interface BoardContextProps {
   updateCellSize: (cellSize: number) => void,
   selectCell: (x: number, y: number) => void,
   runSimulation: () => void,
+  stopSimulation: () => void,
   reset: () => void,
   nextState: () => void,
   advanceStates: (times: number) => void,
@@ -35,6 +37,7 @@ const BoardContext = createContext<BoardContextProps>({
   updateCellSize: () => null,
   selectCell: () => null,
   runSimulation: () => null,
+  stopSimulation: () => null,
   reset: () => null,
   nextState: () => null,
   advanceStates: () => null,
@@ -42,6 +45,16 @@ const BoardContext = createContext<BoardContextProps>({
 
 const BoardProvider = ({ children }: { children: ReactNode }) => {
   const [boardState, dispatch] = useReducer(boardReducer, INITIAL_BOARD_DATA);
+
+  // Looping of the simulation.
+  useEffect(() => {
+    if (!boardState.running) return;
+
+    setTimeout(() => {
+      dispatch({ type: BoardActions.nextState });
+    }, config.simulationMsInterval);
+
+  }, [boardState.running, boardState.cells]);
 
   const boardContextValue = useMemo(() => {
     return {
@@ -56,6 +69,7 @@ const BoardProvider = ({ children }: { children: ReactNode }) => {
         y,
       }),
       runSimulation: () => dispatch({ type: BoardActions.runSimulation }),
+      stopSimulation: () => dispatch({ type: BoardActions.stopSimulation }),
       reset: () => dispatch({ type: BoardActions.reset }),
       nextState: () => dispatch({ type: BoardActions.nextState }),
       advanceStates: (times: number) => dispatch({
