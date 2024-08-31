@@ -1,6 +1,6 @@
-const path = require('node:path');
+import path from 'node:path';
 
-const jestConfig = {
+export default {
   rootDir: process.cwd(),
   testPathIgnorePatterns: [
     '/.storybook/',
@@ -43,5 +43,3 @@ const jestConfig = {
     path.resolve(process.cwd(), 'config', 'jest.polyfills.js'),
   ],
 };
-
-module.exports = jestConfig;

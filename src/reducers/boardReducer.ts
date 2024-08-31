@@ -20,6 +20,7 @@ enum BoardActions {
 
 const boardReducer = (
   state: BoardData,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   action: { type: BoardActions } & Record<string, any>,
 ) => {
   switch (action.type) {

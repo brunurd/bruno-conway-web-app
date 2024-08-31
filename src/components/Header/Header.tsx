@@ -31,8 +31,8 @@ const Header = () => {
       />
       {showing && (
         <>
-          <Title>Bruno Araujo's </Title>
-          <Subtitle>Conway's Game of Life</Subtitle>
+          <Title>{'Bruno Araujo\'s'}</Title>
+          <Subtitle>{'Conway\'s Game of Life'}</Subtitle>
           <Spacing margin="20px 0 0">
             <Row>
               <Button
