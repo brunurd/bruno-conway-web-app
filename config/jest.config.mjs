@@ -1,5 +1,3 @@
-import path from 'node:path';
-
 export default {
   rootDir: process.cwd(),
   testPathIgnorePatterns: [
@@ -38,8 +36,5 @@ export default {
   },
   setupFilesAfterEnv: [
     '<rootDir>/.jest/setup.ts',
-  ],
-  setupFiles: [
-    path.resolve(process.cwd(), 'config', 'jest.polyfills.js'),
   ],
 };
