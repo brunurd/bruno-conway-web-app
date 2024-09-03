@@ -15,7 +15,7 @@ import {
 interface BoardContextProps {
   data: BoardData,
   updateCellSize: (cellSize: number) => void,
-  selectCell: (x: number, y: number) => void,
+  toggleCell: (x: number, y: number) => void,
   runSimulation: () => void,
   stopSimulation: () => void,
   reset: () => void,
@@ -24,9 +24,8 @@ interface BoardContextProps {
 }
 
 const INITIAL_BOARD_DATA: BoardData = {
+  ...config,
   cellSize: config.maxCellSize,
-  rows: config.rows,
-  cols: config.cols,
   cells: Array.from({ length: config.rows }, () =>
     Array.from({ length: config.cols }, () => false)),
   running: false,
@@ -35,7 +34,7 @@ const INITIAL_BOARD_DATA: BoardData = {
 const BoardContext = createContext<BoardContextProps>({
   data: INITIAL_BOARD_DATA,
   updateCellSize: () => null,
-  selectCell: () => null,
+  toggleCell: () => null,
   runSimulation: () => null,
   stopSimulation: () => null,
   reset: () => null,
@@ -43,8 +42,14 @@ const BoardContext = createContext<BoardContextProps>({
   advanceStates: () => null,
 });
 
-const BoardProvider = ({ children }: { children: ReactNode }) => {
-  const [boardState, dispatch] = useReducer(boardReducer, INITIAL_BOARD_DATA);
+const BoardProvider = ({
+  children,
+  initialData = INITIAL_BOARD_DATA,
+}: {
+  children: ReactNode,
+  initialData?: BoardData,
+}) => {
+  const [boardState, dispatch] = useReducer(boardReducer, initialData);
 
   // Looping of the simulation.
   useEffect(() => {
@@ -52,7 +57,7 @@ const BoardProvider = ({ children }: { children: ReactNode }) => {
 
     setTimeout(() => {
       dispatch({ type: BoardActions.nextState });
-    }, config.simulationMsInterval);
+    }, boardState.simulationMsInterval);
 
   }, [boardState.running, boardState.cells]);
 
@@ -63,8 +68,8 @@ const BoardProvider = ({ children }: { children: ReactNode }) => {
         type: BoardActions.updateCellSize,
         cellSize,
       }),
-      selectCell: (x: number, y: number) => dispatch({
-        type: BoardActions.selectCell,
+      toggleCell: (x: number, y: number) => dispatch({
+        type: BoardActions.toggleCell,
         x,
         y,
       }),

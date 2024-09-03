@@ -70,6 +70,7 @@ const AdvanceStatesForm = () => {
       <form onSubmit={onSubmit}>
         <Column>
           <TextField
+            data-testid="advance-state-input"
             disabled={running}
             name="advanceStatesTimes"
             type="number"
@@ -78,6 +79,7 @@ const AdvanceStatesForm = () => {
             error={errors.advanceStatesTimes}
           />
           <Button
+            data-testid="advance-state-button"
             disabled={running}
             type="submit"
             maxWidth="200px"

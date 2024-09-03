@@ -12,7 +12,8 @@ References:
 |Package Manager|[PNPM](pnpm)|
 |Bundler|[Vite](./config/vite.config.ts)|
 |Language|TypeScript|
-
+|Test Suite|Jest + Testing Library|
+|Static Analysis|ESLint|
 
 
 ---

@@ -7,10 +7,11 @@ const CellStyle = styled.div<{
   $disabled: boolean,
 }>`
   display: block;
-  transition: background-color 0.15s ease-in-out;
+  transition: background-color ${({ theme }) => `${theme.transitions.short.duration} ${theme.transitions.short.ease}`};
   cursor: ${({ $disabled }) => $disabled ? 'auto' : 'pointer'};
   width: ${({ $cellSize }) => `${$cellSize}px`};
   height: ${({ $cellSize }) => `${$cellSize}px`};
+  box-sizing: border-box;
 
   ${({ $isAlive, theme }) => {
     const strokeColor = $isAlive ? darken(0.1, theme.colors.lightOrange) : theme.colors.lightOrange;

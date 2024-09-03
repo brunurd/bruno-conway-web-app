@@ -12,15 +12,15 @@ const CellSpawner = () => {
         (row, x) => {
           return <RowStyle key={`row-${x}`}>
             {row.map(
-              (isAlive, y) => {
-                return <Cell
-                  key={`${x},${y}`}
+              (isAlive, y) => (
+                <Cell
+                  key={`cell-${x}-${y}`}
                   cellSize={cellSize}
                   isAlive={isAlive}
                   x={x}
                   y={y}
-                />;
-              },
+                />
+              ),
             )}
           </RowStyle>;
         })}

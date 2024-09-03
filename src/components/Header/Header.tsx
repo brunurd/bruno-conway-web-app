@@ -36,6 +36,7 @@ const Header = () => {
           <Spacing margin="20px 0 0">
             <Row>
               <Button
+                data-testid="next-state-button"
                 disabled={running}
                 onClick={() => nextState()}
               >
@@ -43,12 +44,14 @@ const Header = () => {
               </Button>
               {running ? (
                 <Button
+                  data-testid="stop-simulation-button"
                   onClick={() => stopSimulation()}
                 >
                   Stop Simulation
                 </Button>
               ) : (
                 <Button
+                  data-testid="run-simulation-button"
                   disabled={running}
                   onClick={() => runSimulation()}
                 >
@@ -56,6 +59,7 @@ const Header = () => {
                 </Button>
               )}
               <Button
+                data-testid="reset-button"
                 onClick={() => reset()}
               >
                 Reset

@@ -13,13 +13,14 @@ const Cell = ({
   x: number,
   y: number,
 }) => {
-  const { selectCell, data: { running } } = useContext(BoardContext);
+  const { toggleCell, data: { running } } = useContext(BoardContext);
 
   return <CellStyle
+    data-testid={`cell-${x}-${y}`}
     $cellSize={cellSize}
     $isAlive={isAlive}
     $disabled={running}
-    onClick={() => selectCell(x, y)}
+    onMouseDown={(e) => { e.preventDefault(); toggleCell(x, y); }}
   />;
 };
 

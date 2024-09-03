@@ -22,19 +22,15 @@ export default {
   maxWorkers: 1,
   coverageThreshold: {
     global: {
-      lines: 40,
-      statements: 40,
-      branches: 40,
-      functions: 40,
+      lines: 60,
+      statements: 60,
+      branches: 60,
+      functions: 60,
     },
   },
   preset: 'ts-jest',
   testEnvironment: 'jest-environment-jsdom',
   testEnvironmentOptions: {
     url: 'http://localhost/',
-    customExportConditions: [''],
   },
-  setupFilesAfterEnv: [
-    '<rootDir>/.jest/setup.ts',
-  ],
 };

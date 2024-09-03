@@ -4,13 +4,16 @@ interface BoardData {
   cellSize: number,
   rows: number,
   cols: number,
-  cells: CellsType,
+  maxCellSize: number,
+  minCellSize: number,
+  simulationMsInterval: number,
   running: boolean,
+  cells: CellsType,
 }
 
 enum BoardActions {
   updateCellSize = 'BOARD/UPDATE_CELL_SIZE',
-  selectCell = 'BOARD/SELECT_CELL',
+  toggleCell = 'BOARD/TOGGLE_CELL',
   runSimulation = 'BOARD/RUN_SIMULATION',
   stopSimulation = 'BOARD/STOP_SIMULATION',
   reset = 'BOARD/RESET',
@@ -26,9 +29,9 @@ const boardReducer = (
   switch (action.type) {
     case BoardActions.updateCellSize:
       return { ...state, cellSize: action.cellSize };
-    case BoardActions.selectCell:
+    case BoardActions.toggleCell:
       if (state.running) return state;
-      state.cells[action.x][action.y] = true;
+      state.cells[action.x][action.y] = !state.cells[action.x][action.y];
       return { ...state };
     case BoardActions.runSimulation:
       return { ...state, running: true };
@@ -51,7 +54,7 @@ const boardReducer = (
 };
 
 const nextState = (cells: CellsType): CellsType => {
-  const nextStateCells = structuredClone(cells);
+  const nextStateCells = cells.map((row) => [...row]);
   return nextStateCells.map((row, x) => {
     return row.map((isAlive, y) => {
 
