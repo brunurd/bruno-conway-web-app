@@ -4,6 +4,10 @@ import { Board } from '../components/Board';
 import { Header } from '../components/Header';
 
 const HomePage = () => {
+  useEffect(() => {
+    const requestBoardData = () => { };
+  }, []);
+
   return (
     <Page>
       <BoardProvider>

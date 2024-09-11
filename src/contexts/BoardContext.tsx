@@ -5,7 +5,6 @@ import {
   useMemo,
   useReducer,
 } from 'react';
-import * as config from '../data/board.config.json';
 import {
   BoardActions,
   BoardData,
@@ -13,7 +12,7 @@ import {
 } from '../reducers/boardReducer';
 
 interface BoardContextProps {
-  data: BoardData,
+  data: BoardData | null,
   updateCellSize: (cellSize: number) => void,
   toggleCell: (x: number, y: number) => void,
   runSimulation: () => void,
@@ -23,16 +22,8 @@ interface BoardContextProps {
   advanceStates: (times: number) => void,
 }
 
-const INITIAL_BOARD_DATA: BoardData = {
-  ...config,
-  cellSize: config.maxCellSize,
-  cells: Array.from({ length: config.rows }, () =>
-    Array.from({ length: config.cols }, () => false)),
-  running: false,
-};
-
 const BoardContext = createContext<BoardContextProps>({
-  data: INITIAL_BOARD_DATA,
+  data: null,
   updateCellSize: () => null,
   toggleCell: () => null,
   runSimulation: () => null,
@@ -44,10 +35,10 @@ const BoardContext = createContext<BoardContextProps>({
 
 const BoardProvider = ({
   children,
-  initialData = INITIAL_BOARD_DATA,
+  initialData,
 }: {
   children: ReactNode,
-  initialData?: BoardData,
+  initialData: BoardData,
 }) => {
   const [boardState, dispatch] = useReducer(boardReducer, initialData);
 
