@@ -5,7 +5,7 @@ import pluginReact from 'eslint-plugin-react';
 import pluginSecurity from 'eslint-plugin-security';
 
 export default [
-  { ignores: ['dist/*', 'config/jest.polyfills.js'] },
+  { ignores: ['dist/*', 'coverage/*'] },
   { files: ['src/**/*.{js,mjs,cjs,ts,jsx,tsx}'] },
   { files: ['config/**/*.{ts,mjs}'] },
   { files: ['config/**/*.js'], languageOptions: { sourceType: 'commonjs' } },

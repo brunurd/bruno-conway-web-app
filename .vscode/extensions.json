@@ -1,5 +1,8 @@
 {
   "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "streetsidesoftware.code-spell-checker",
+    "styled-components.vscode-styled-components",
     "foxundermoon.shell-format",
     "redhat.vscode-yaml"
   ]
